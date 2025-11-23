@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Identification System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <span class="title-icon">🎙️</span>
+                    Speaker Identification
+                </h1>
+                <p class="subtitle">AI-Powered Voice Recognition System</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Recording Section -->
+            <section class="recording-section">
+                <div class="card recording-card">
+                    <h2 class="section-title">Record Your Voice</h2>
+                    <p class="section-description">
+                        Click the microphone and say: <br>
+                        <em>"Convolutional Neural Networks can be used for speech and voice recognition"</em>
+                    </p>
+
+                    <div class="recording-controls">
+                        <button id="recordBtn" class="record-btn" aria-label="Start Recording">
+                            <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                            <span class="btn-text">Click to Record</span>
+                        </button>
+
+                        <div id="countdown" class="countdown hidden">
+                            <span class="countdown-number">3</span>
+                        </div>
+
+                        <div id="recordingIndicator" class="recording-indicator hidden">
+                            <span class="pulse-dot"></span>
+                            <span>Recording...</span>
+                        </div>
+                    </div>
+
+                    <!-- Waveform Visualization -->
+                    <div id="waveformContainer" class="waveform-container hidden">
+                        <canvas id="waveformCanvas"></canvas>
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div id="statusMessage" class="status-message"></div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="card results-card">
+                    <h2 class="section-title">Prediction Results</h2>
+
+                    <div id="predictedSpeaker" class="predicted-speaker">
+                        <div class="speaker-icon">👤</div>
+                        <div class="speaker-info">
+                            <span class="speaker-label">Identified Speaker</span>
+                            <span id="speakerName" class="speaker-name">-</span>
+                        </div>
+                        <div id="confidenceBadge" class="confidence-badge">
+                            <span id="confidenceValue">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <h3 class="probabilities-title">All Speakers</h3>
+                    <div id="probabilitiesList" class="probabilities-list">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by CNN Deep Learning • Enhanced Audio Processing</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Processing audio...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
