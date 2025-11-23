@@ -9,8 +9,15 @@ Real-time computer vision system combining face recognition with hand gesture de
 
 **Tech Stack:** Python, OpenCV, ONNX Runtime, NumPy
 
-### 2. [Zoom Virtual Background](./projects/zoom-virtual-background/)
+### 2. [Speaker Identification System](./projects/speaker-identification/)
+Deep learning-based speaker identification using CNN. Converts audio into mel-spectrograms and achieves 100% test accuracy on trained speakers with real-time prediction capabilities.
+
+**Tech Stack:** Python, PyTorch, Librosa, Flask
+
+### 3. [Zoom Virtual Background](./projects/zoom-virtual-background/)
 Virtual background implementation for video conferencing applications.
+
+**Tech Stack:** Python, OpenCV
 
 ## Repository Structure
 
@@ -18,6 +25,7 @@ Virtual background implementation for video conferencing applications.
 Deep-Learning-Lab/
 ├── projects/
 │   ├── face-gesture-recognition/
+│   ├── speaker-identification/
 │   └── zoom-virtual-background/
 ├── README.md
 └── LICENSE

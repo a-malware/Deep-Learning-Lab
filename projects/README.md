@@ -22,10 +22,30 @@ A real-time computer vision system that combines face recognition with hand gest
 
 ---
 
-### 2. Zoom Virtual Background
+### 2. Speaker Identification System
+**Directory:** `speaker-identification/`
+
+A deep learning-based speaker identification system using CNN. Converts audio into mel-spectrograms and uses image classification techniques for speaker recognition.
+
+**Key Features:**
+- 100% test accuracy on trained speakers
+- Real-time prediction from microphone input
+- Web interface with Flask
+- Audio enhancement and preprocessing
+- Lightweight model (33K parameters)
+
+**Technologies:** Python, PyTorch, Librosa, Flask
+
+[View Project](./speaker-identification/)
+
+---
+
+### 3. Zoom Virtual Background
 **Directory:** `zoom-virtual-background/`
 
-Virtual background implementation for video conferencing.
+Virtual background implementation for video conferencing applications.
+
+**Technologies:** Python, OpenCV
 
 [View Project](./zoom-virtual-background/)
 
