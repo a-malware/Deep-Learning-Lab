@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific - user generated content
+images/
+report_images/
+*.xcf
+
+# Keep directory structure but ignore contents
+!images/.gitkeep
+!report_images/.gitkeep
+
+# Trained models (keep structure, ignore trained data)
+real-time-face-recognition-master/trainer.yml
+real-time-face-recognition-master/images/*.jpg
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Temporary files
+*.tmp
+*.bak

@@ -1,0 +1,66 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+
+\begin{document}
+
+\tikzset{
+    process/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=blue!20, font=\small},
+    decision/.style={diamond, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=green!20, font=\small},
+    io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.8cm, text centered, draw=black, fill=orange!20, font=\small},
+    data/.style={cylinder, shape border rotate=90, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=yellow!20, font=\small},
+    arrow/.style={thick,->,>=Stealth},
+    box/.style={rectangle, draw=black, dashed, rounded corners, inner sep=10pt},
+}
+
+\begin{tikzpicture}[node distance=1.5cm]
+
+% Input
+\node (input) [io] {Webcam Input\\640×480};
+
+% Face Recognition Path
+\node (face_detect) [process, below left=1cm and 1cm of input] {Face Detection\\Haar Cascade};
+\node (face_recog) [process, below=of face_detect] {Face Recognition\\LBPH};
+\node (face_data) [data, below=of face_recog] {Trained\\Faces\\(9 IDs)};
+
+% Gesture Recognition Path
+\node (hand_detect) [process, below right=1cm and 1cm of input] {Hand Detection\\ONNX Model};
+\node (hand_class) [process, below=of hand_detect] {Gesture Classification\\ONNX Model};
+\node (hand_track) [process, below=of hand_class] {Hand Tracking\\OC-SORT};
+
+% Association
+\node (associate) [process, below=3cm of input, fill=purple!20] {Spatial Association\\Distance-based};
+
+% Output
+\node (output) [io, below=of associate] {Output\\Person + Gesture};
+
+% Bounding box for Face module
+\begin{scope}[on background layer]
+\node[box, fit=(face_detect)(face_recog)(face_data), label=above left:{\textbf{Face Module}}] (face_box) {};
+\end{scope}
+
+% Bounding box for Gesture module
+\begin{scope}[on background layer]
+\node[box, fit=(hand_detect)(hand_class)(hand_track), label=above right:{\textbf{Gesture Module}}] (gesture_box) {};
+\end{scope}
+
+% Arrows
+\draw [arrow] (input) -| (face_detect);
+\draw [arrow] (input) -| (hand_detect);
+\draw [arrow] (face_detect) -- (face_recog);
+\draw [arrow] (face_recog) -- (face_data);
+\draw [arrow] (face_data) -- ++(0,-0.5) -| (associate);
+\draw [arrow] (hand_detect) -- (hand_class);
+\draw [arrow] (hand_class) -- (hand_track);
+\draw [arrow] (hand_track) -- ++(0,-0.5) -| (associate);
+\draw [arrow] (associate) -- (output);
+
+% Labels on arrows
+\node[font=\tiny, right] at ($(face_detect)!0.5!(face_recog)$) {Faces};
+\node[font=\tiny, left] at ($(hand_detect)!0.5!(hand_class)$) {Hands};
+\node[font=\tiny, left] at ($(face_recog)!0.5!(face_data)$) {IDs};
+\node[font=\tiny, right] at ($(hand_class)!0.5!(hand_track)$) {Gestures};
+
+\end{tikzpicture}
+
+\end{document}

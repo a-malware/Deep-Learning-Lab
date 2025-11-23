@@ -1,0 +1,9 @@
+# Core dependencies for combined face & gesture recognition
+opencv-contrib-python>=4.6.0
+numpy>=1.21.0
+onnxruntime>=1.13.0
+scipy>=1.7.0
+filterpy>=1.4.5
+
+# Optional: For better performance
+# onnxruntime-gpu>=1.13.0  # Uncomment if you have CUDA GPU
